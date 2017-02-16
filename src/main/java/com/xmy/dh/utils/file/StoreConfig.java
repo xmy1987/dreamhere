@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by qinyong on 2017/2/15.
  */
 @Component
-public class StoreConfig {
+public class StoreConfig{
     @Value("${cos.appId}")
     public int appId;
 
@@ -20,4 +20,9 @@ public class StoreConfig {
     public final static String DEFAULT_BUCKET_NAME = "dreamhere";
 
     public String bucketName = DEFAULT_BUCKET_NAME;
+
+    @Value("${cos.region}")
+    public String region;
+
+
 }

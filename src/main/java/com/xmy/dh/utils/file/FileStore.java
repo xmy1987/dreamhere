@@ -1,7 +1,9 @@
 package com.xmy.dh.utils.file;
 
 import com.qcloud.cos.COSClient;
+import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.UploadFileRequest;
+import com.qcloud.cos.sign.Credentials;
 
 /**
  * Created by qinyong on 2017/2/15.
@@ -14,7 +16,11 @@ public class FileStore {
 
     private FileStore(StoreConfig storeConfig){
         this.storeConfig = storeConfig;
-        cosClient = new COSClient(this.storeConfig.appId,this.storeConfig.secretId,this.storeConfig.secretKey);
+        ClientConfig clientConfig = new ClientConfig();
+        // 设置bucket所在的区域，比如广州(gz), 天津(tj)
+        clientConfig.setRegion(this.storeConfig.region);
+        Credentials cred = new Credentials(this.storeConfig.appId,this.storeConfig.secretId,this.storeConfig.secretKey);
+        cosClient = new COSClient(clientConfig,cred);
     }
 
     public static FileStore getInstance(StoreConfig storeConfig){
@@ -24,11 +30,8 @@ public class FileStore {
     public String uploadFile(String storePath,String localFilePath){
         UploadFileRequest uploadFileRequest = new UploadFileRequest(this.storeConfig.bucketName, storePath, localFilePath);
         String res =  cosClient.uploadFile(uploadFileRequest);
+        cosClient.shutdown();
         return res;
     }
 
-
-    public void shutdown() {
-        cosClient.shutdown();
-    }
 }
