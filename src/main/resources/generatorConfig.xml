@@ -5,38 +5,39 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:/Users/qinyong/.m2/repository/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>
+            location="/Users/muyu/dev/repo/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>
 
     <context id="MySQLTables" targetRuntime="MyBatis3Simple">
         <commentGenerator>
             <property name="addRemarkComments" value="true" />
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.152.51:3306/oih3?characterEncoding=UTF-8"
-                        userId="oih"
-                        password="oih">
+                        connectionURL="jdbc:mysql://lcoalhost:3306/dreamhere?characterEncoding=UTF-8"
+                        userId="root"
+                        password="root">
         </jdbcConnection>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.xmy.dh.domain" targetProject="D:\git\dreamhere\src\main\java">
+        <javaModelGenerator targetPackage="com.xmy.dh.domain" targetProject="/Users/muyu/dev/git/dreamhere/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="plan.xml" targetProject="D:\git\dreamhere\src\main\resources\mybatis">
+        <sqlMapGenerator targetPackage="plan.xml" targetProject="/Users/muyu/dev/git/dreamhere/src/main/resources/mybatis">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xmy.dh.dao" targetProject="D:\git\dreamhere\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xmy.dh.dao" targetProject="/Users/muyu/dev/git/dreamhere/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="oih_plan" domainObjectName="Plan" schema="plan"/>
-        <table tableName="oih_user" domainObjectName="User" schema="user"/>
+        <table tableName="%">
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
 
     </context>
 </generatorConfiguration>
