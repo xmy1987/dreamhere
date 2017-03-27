@@ -1,4 +1,4 @@
-package com.xmy.dh.utils.file;
+package com.xmy.dh.util.file;
 
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -16,6 +16,10 @@ public class FileStore {
 
     private FileStore(StoreConfig storeConfig){
         this.storeConfig = storeConfig;
+        init();
+    }
+
+    private void init(){
         ClientConfig clientConfig = new ClientConfig();
         // 设置bucket所在的区域，比如广州(gz), 天津(tj)
         clientConfig.setRegion(this.storeConfig.region);

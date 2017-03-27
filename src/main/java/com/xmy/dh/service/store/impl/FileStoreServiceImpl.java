@@ -1,8 +1,8 @@
 package com.xmy.dh.service.store.impl;
 
-import com.xmy.dh.utils.file.FileStore;
+import com.xmy.dh.util.file.FileStore;
 import com.xmy.dh.service.store.FileStoreService;
-import com.xmy.dh.utils.file.StoreConfig;
+import com.xmy.dh.util.file.StoreConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
